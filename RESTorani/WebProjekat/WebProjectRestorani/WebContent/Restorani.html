@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>RESTorani</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="restorani.js"></script>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		
+		#nav1{
+		    position: fixed;
+		    z-index: 100;
+    		top: 0;
+    		width: 100%;
+			background-color: red;
+			height: 50px;
+		}
+		
+		#ul1 li{
+			list-style-type: none;
+			width: 150px;
+			float: left;
+			text-align: center;
+			font-size: 25px;
+			font-family:sans-serif;
+
+		}
+		
+		#ul1 li a{
+			text-decoration: none;
+			color: white;
+			line-height: 50px;
+			display: block;
+		}
+		
+		li a:hover{
+			background-color:  #a51d00;
+		}
+		
+		#searchButton:hover{
+			background-color:  #a51d00;
+		}
+		
+		#buttonKorpa:hover{
+			background-color:  #a51d00;
+		}
+		
+		.slika{
+			width:50px;
+		    height:50px;
+		    display: block;
+    		margin-left: auto;
+    		margin-right: auto;	    
+		}
+		
+		.divParent{
+			float:top;
+			z-index: 90;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+		}
+		
+		.divChild{
+			float:top;	
+		   	position: relative;
+			height: 100%;
+			width: 70%;
+            background:rgba(245,245,245, 0.8);
+            margin: 0 auto;
+		}
+		
+		.tabelaDiv{
+			float:top;
+			position: absolute;
+			top: 0;
+			left: 0;
+			overflow-y:auto;
+			height: 100%;
+			width: 100%;
+			background-color: brown;
+		}	
+		
+		.tabelaDivChild{
+			float:top;	
+		   	position: relative;
+			min-height: 100%;
+			height:auto;
+			width: 80%;
+            background:rgba(245,245,245, 0.8);
+            margin: 0 auto;
+		}
+		
+		.tabelaPromenaAdmina{
+			float: top;
+			margin: 0 auto;
+			width: 70%;
+			height: auto;
+			border: 2px solid black;
+			background-color: #990000;
+		}
+		
+		.tabelaPromenaAdmina tr{
+			height:50px;
+		}
+		
+		.tabelaPromenaAdmina thead{
+			border-bottom: 2px solid black;
+		}
+		
+		.tabelaPromenaAdmina tr:hover{
+			background-color: #660000;
+		}
+		
+		.tabelaPromenaAdmina thead:hover{
+			border-bottom: 2px solid black;
+			background-color: #990000;
+		}
+		
+		#tabelaJela{		
+			float: left;
+			margin-left:85px;
+			margin-bottom:80px;
+			width: 40%;
+			height: 40%;
+			border: 2px solid black;
+			background-color: #990000;
+		}
+		
+		#tabelaPica{
+			float: left;
+			margin-left:85px;
+			margin-bottom:80px;
+			width: 40%;
+			height: 40%;
+			border: 2px solid black;
+			background-color: #990000;
+		}
+		
+		th, td{
+			text-align: center;
+			color: white;
+		}
+		
+		#tabelaJela tr:hover td{
+			background-color:#660000;
+		}
+		
+		#tabelaPica tr:hover td{
+			background-color:#660000;
+		}
+		
+		.kategorijeRestorana{
+			float:top;
+		   	position: relative;
+			height: 40%;
+			width: 90%;
+            background:rgba(245,245,245, 0);
+            margin-left:53px;
+		}
+		
+		.kategorija{
+			color:white;
+			border: 2px solid black;
+			border-bottom-color: black;
+			float:left;
+		   	position: relative;
+			height: 40%;
+			width: 15%;
+            margin: 0 auto;
+            margin-left: 15px;
+            background-color: #990000;
+            overflow: hidden;
+		}
+		
+		.kategorija:hover{
+			height:auto;
+			background-color:#660000;
+		}
+		
+		.kategorija img{
+			float:top;
+			max-width: 100%;
+    		max-height: 100%;
+		}
+		
+		.p1{
+			float:top;
+			color: white;
+			text-align: center;
+			font-family: sans-serif;
+			font-size: 15px;
+		}
+		
+		.button1{
+			padding-top:10px;
+			padding-bottom:10px;
+			height: 100%;
+			width:150px;
+			background-color: Transparent;
+		    background-repeat:no-repeat;
+		    border: none;
+		    cursor:pointer;
+		    overflow: hidden;
+		    outline:none;
+		    color:white;
+			font-size: 25px;
+			font-family:sans-serif;
+		}
+		.button1:hover{
+			background-color:#990000;
+		}
+		
+		#loginDiv{	
+		   	position:absolute;
+		   	height:40%;
+			width: 45%;
+            background: rgb(245, 245, 245);
+            margin: 0 auto;
+            margin-left: 550px;
+            margin-top: 200px;
+
+		}
+		
+		.loginInput{
+			width: 500px;
+			height: 40px;
+			margin-top: 40px;
+			font-family: sans-serif;
+			font-size: 25px;	
+			
+		}
+		
+		#formaLogin{
+			font-family: sans-serif;
+			font-size: 30px;
+		}
+		
+		#loginDugme{
+			background-color: green;
+			color: white;
+			border-bottom-color:green;
+			height: 40px;
+			width: 100px;
+			margin-left: 400px;
+			cursor:pointer;
+			font-size: 15px;
+		}
+		
+		#loginDugme:hover{
+			background-color: #004F00;
+		}	
+		
+		.buttonExit{
+			float: right;
+		    float:top;
+		    background-color: Transparent;
+		    background-repeat:no-repeat;
+		    border: none;
+		    cursor:pointer;
+		    overflow: hidden;
+		    outline:none;
+		}
+		
+		.buttonExit:hover{
+			background-color: #990000;
+		}
+		
+		.dodajZaAdminaDiv{
+			position:absolute;
+		   	height:85%;
+			width: 45%;
+            background: rgb(245, 245, 245);
+            margin: 0 auto;
+            margin-left: 550px;
+            margin-top: 100px;
+		}      
+		
+		.registerParagraphs{
+			margin-bottom: 35px;
+			margin-left: 30px;
+		}
+		.registerInput{
+			float: left;
+			width: 500px;
+			height: 40px;
+			margin-bottom: 19px;
+			margin-top:19px;
+			font-family: sans-serif;
+			font-size: 25px;
+			resize: none;
+		}
+		
+		.dodajDugme{
+			background-color: green;
+			color: white;
+			border-bottom-color:green;
+			height: 40px;
+			margin-top:50px;
+			margin-left:150px;
+			width: 100px;
+			cursor:pointer;
+			font-size: 15px;
+		}
+		
+		.dodajDugme:hover{
+			background-color: #004F00;
+		}	
+		
+		.backgroundDivs{
+			width:100%;
+			height:100%;
+			background: rgba(0,0,0,0.7);
+			position: absolute;
+			z-index: 1000;		
+		}
+		
+		#filterDiv{	
+		   	position:absolute;
+		   	height:50%;
+			width: 45%;
+            background: rgb(245, 245, 245);
+            margin: 0 auto;
+            margin-left: 550px;
+            margin-top: 200px;
+		}
+		
+		.buttonFilter{
+			height: 100%;
+			float:left;
+			width:50%;
+			background-color: Transparent;
+		    background-repeat:no-repeat;
+		    cursor:pointer;
+		    overflow: hidden;
+		    outline:none;  
+			font-size: 25px;
+			font-family:sans-serif;
+		}
+		.buttonFilter:hover{
+			background-color: #B7B7B7;
+		}
+		
+		#filterDugme{
+			background-color: green;
+			color: white;
+			border-bottom-color:green;
+			height: 40px;
+			margin-top:80px;
+			margin-left:380px;
+			width: 100px;
+			cursor:pointer;
+			font-size: 15px;
+		}
+		
+		#filterDugme:hover{
+			background-color: #004F00;
+		}	
+		
+		.dropdown {
+    		position: relative;
+    		display: inline-block;
+		}
+		
+		.dropdown-content {
+    		display: none;
+    		position: absolute;
+    		background-color: rgba(245, 245, 245);
+    		min-width: 150px;
+    		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    		z-index: 1;
+		}
+		
+		.dropdown-content a {
+    		color: black;
+    		padding: 12px 16px;
+    		text-decoration: none;
+    		display: block;
+		}
+
+		.dropdown-content a:hover {
+			background-color:  #B7B7B7;
+		}
+
+		.dropdown:hover .dropdown-content {
+  		    display: block;
+		}
+		.kategorijeRestoranaDivs{
+			float: left;
+			margin-top: 30px;
+			background-color: red;
+		    width:179px;
+		    height:190px;
+		    color: white;
+		    font-family: sans-serif;
+		    font-size: 20px;
+			border: 2px solid black;
+		}
+		
+		.kategorijeRestoranaDivs:hover{
+			background-color:  #990000;
+		}
+		
+		#tabelaRestorana tbody:hover{
+			cursor: pointer;
+		}
+		
+		#tabelaVozila tbody:hover{
+			cursor: pointer;
+		}
+		
+		#tabelaKorisnika tbody:hover{
+			cursor: pointer;
+		}
+		
+		#tabelaArtikala tbody:hover{
+			cursor: pointer;
+		}
+		#tabelaOmiljenihRestorana tbody:hover{
+			cursor: pointer;
+		}
+		
+		/*#dodajArtikalButton{
+			color:white;
+			background-color: green;
+			font-family:sans-serif;
+			float:right;
+			margin-top:162px;
+			margin-right:70px; 
+		    width:100px; 
+			height:50px;
+		}*/
+		
+		#zavrsiPorudzbinuButton{
+			color:white;
+			background-color: green;
+			font-family:sans-serif;
+			float:right;
+			margin-top:660px;
+			margin-right:70px; 
+		    width:100px; 
+			height:50px;
+		}
+		
+		#zavrsiPorudzbinuButton:hover{
+		 	cursor:pointer;
+		 	background-color: #004F00;
+		}
+		
+		/*#dodajArtikalButton:hover{
+		 cursor:pointer;
+		 background-color: #004F00;
+		}*/	
+		
+		.kolicinaParagraph{
+			font-family: sans-serif;
+			font-size: 18px;
+			margin-left: 420px;
+			margin-top: 57px;
+		}
+		
+		#posaljiPorudzbinuButton{
+			color:white;
+			background-color: green;
+			font-family:sans-serif;
+			float:right;
+			margin-top:162px;
+			margin-right:120px; 
+		    width:100px; 
+			height:50px;
+		}
+		
+		#bodoviButton{
+			color:red;
+			background-color: #DCDCDC;
+			font-family:sans-serif;
+			float:right;
+			margin-top:30px;
+			margin-right:1320px;
+		    width:100px; 
+			height:50px;
+		}
+		
+		#posaljiPorudzbinuButton:hover{
+		 cursor:pointer;
+		 background-color: #004F00;
+		}
+		
+		#bodoviButton:hover{
+		 cursor:pointer;
+		 background-color: #A9A9A9;
+		}
+		
+		textarea{
+			resize:none;
+		}
+		
+		
+	</style>
+</head>
+<body>
+	<nav id=nav1>
+	<form id="mainMenu">
+		<ul id=ul1>
+		  	<li style="font-size: 30px"><button class="button1" id="homeButton">RESTorani</button></li>
+		  	<li style="width:50px; margin-left: 100px;"><input class="button1" id="searchButton" type="submit" value="Pretraži"/></li>
+		  	<li style="margin-left: 100px;"><input type="text" name="pretragaTextBox" id="pretragaTextBoxId" placeholder="Naziv restorana" style="width:350px; height:30px; margin-top:10px; font-family: sans-serif; font-size: 25px;"/></li>
+		  	<li style="margin-left: 210px;">		  	
+		  	<div class="dropdown">
+				<button id="buttonStaSeTrazi" class="button1" disabled>Filter</button>
+					<div class="dropdown-content">
+						<div style="width:410px; height:250px;">
+							<p style="float:left; margin-right: 20px; margin-top: 10px;">Restorani:</p>
+							<input type="radio" name="StaSeTrazi" style="float:left; margin-top:20px; margin-left: 10px;" value="1" id="restoranRadio" checked>
+							<p style="float:left; margin-right: 20px; margin-top: 10px; margin-left: 60px;">Artikli:</p>
+							<input type="radio" name="StaSeTrazi" style="float:left; margin-top:20px; margin-left: 10px;" value="2"  id="artikalRadio">
+							<p style="float:left; margin-right: 20px; margin-top: 10px;" id="r1">Kategorija:</p>
+							<select id="categoryRestaurantFilter" style="width:250px; height:25px; margin-top: 15px;">
+								  <option value="Bilo Kakva">Bilo kakva</option>
+								  <option value="Domaca Kuhinja">Domaća kuhinja</option>
+								  <option value="Rostilj">Roštilj</option>
+								  <option value="Kineska Kuhinja">Kineska kuhinja</option>
+								  <option value="Indijska Kuhinja">Indijska kuhinja</option>
+								  <option value="Poslasticarnica">Poslastičarnica</option>
+								  <option value="Picerija">Picerija</option>							  
+					 		</select>
+					 		<p style="float:left; margin-right: 20px; margin-top: 10px;" id="r14">Adresa:</p>
+							<input type="text" id="adressRestaurantFilter" name="adresaRestoranaFilter"  placeholder="Grad/Ulica Broj" style="width:250px; height:25px; margin-top: 15px; margin-left: 38px;">
+					 		<p style="float:left; margin-top: 10px;" id="r2"  hidden="true">Tip artikla:</p>
+					 		<select id="jeloIliPiceFilter" style="width:250px; height:25px; margin-top: 15px;"  hidden="true">
+					 			  <option value="Bilo Koji">Bilo koji</option>
+								  <option value="jelo">Jelo</option>
+								  <option value="pice">Piće</option> 							  
+					 		</select>
+					 		<p style="float:left; margin-right: 15px; margin-top: 10px;" id="r3"  hidden="true">Cena:</p>
+					 		<input type="text" name="cenaInputFilter" style="width:100px; float:left; height:25px; margin-top: 15px;" id="r4" hidden="true"/>
+					 		<p style="float:left; margin-left:2px; margin-right: 10px; margin-top: 15px;" id="r5" hidden="true">rsd</p>
+					 		<p style="float:left; margin-left:8px; margin-right: 5px; margin-top: 23px; font-size: 12px;" id="r6"  hidden="true">veća:</p>
+					 		<input type="radio" name="kakvaCena" style="float:left; margin-top: 23px" id="r7"  hidden="true">
+					 		<p style="float:left; margin-left:8px; margin-right: 5px; margin-top: 23px; font-size: 12px;" id="r8"  hidden="true">manja:</p>
+					 		<input type="radio" name="kakvaCena" style="float:left; margin-top: 23px" id="r9"  hidden="true">
+					 	    <p style="float:left; margin-left:8px; margin-right: 5px; margin-top: 23px; font-size: 12px;" id="r10"  hidden="true">tačna:</p>
+					 		<input type="radio" name="kakvaCena" style="float:left; margin-top: 23px" id="r11"  hidden="true" checked>
+					 		<p style="float:left; margin-top: 10px; margin-right: 200px;" id="r12"  hidden="true">Restoran:</p>
+					 		<input type="text" name="restoranInputFilter" style="width:200px; float:left; height:25px; margin-top: -25px; margin-left: 120px;" id="r13" hidden="true"/>
+					 		
+						</div>
+					</div>
+				</div>
+		  	</li>
+		  	<li style="float:right;"><button id="buttonRegistrujSe" class="button1">Registruj se</button>
+		  							 <button id="buttonOdjaviSe" class="button1" hidden="true">Odjavi se</button>	 
+		    </li>						
+		  	<li style="float:right"><button id="buttonPrijaviSe" class="button1">Prijavi se</button>
+		  							<button hidden="true" id="buttonKorpa" class="button1">Korpa</button>
+		  							<button id="buttonKorisnici" class="button1" hidden="true">Korisnici</button>
+		  	</li>
+		    <li id="liMojaStranica" style="float:right"><button id="buttonMojaStranica" class="button1" hidden="true">Moja stranica</button>
+				<div class="dropdown">
+					<button id="buttonPorudzbine" class="button1" hidden="true" disabled>Porudžbine</button>
+					<div class="dropdown-content">
+						<button id="buttonKreirajPorudzbinuAdmin" class="button1" style="color:red">Kreiraj</button>
+						<button id="buttonIzlistajPorudzbineAdmin" class="button1" style="color:red">Izlistaj</button>
+					</div>
+				</div> 				
+		    </li>								
+		    <li id="liOdjava" style="float:right">
+		    	<div class="dropdown">
+		    		<button id="buttonRestorani" class="button1" hidden="true" disabled>Restorani</button>
+						<div class="dropdown-content">
+							<button id="buttonDodajRestoran" class="button1" style="color:red">Dodaj</button>
+							<button id="buttonIzlistajRestorane" class="button1" style="color:red">Izlistaj</button>
+						</div>
+		    	</div>
+		    </li>
+		      
+   		    <li id="liVozila" style="float:right">
+   		    	<div class="dropdown">
+					<button id="buttonVozila" class="button1" hidden="true" disabled>Vozila</button>	
+						<div class="dropdown-content">
+							<button id="buttonDodajVozilo" class="button1" style="color:red">Dodaj</button>
+							<button id="buttonIzlistajVozila" class="button1" style="color:red">Izlistaj</button>
+						</div>
+		    	</div>
+			</li>
+			
+			<li id="liArtikli" style="float:right">
+   		    	<div class="dropdown">
+					<button id="arikalButtonLi" class="button1" hidden="true" disabled>Artikli</button>	
+						<div class="dropdown-content">
+							<button id="dodajArtikalButton1" class="button1" style="color:red">Dodaj</button>
+							<button id="izlistajArtikalButton1" class="button1" style="color:red">Izlistaj</button>
+						</div>
+		    	</div>
+			</li>
+			
+			<li id="liPorudzbineD" style="float:right; margin-left: 500px; margin-top: -30px">
+   		    	<div class="dropdown">
+					<button id="buttonPorudzbineD" class="button1" hidden="true" disabled>Porudžbine</button>	
+						<div class="dropdown-content">
+							<button id="buttonTrenutnaPorudzbina" class="button1" style="color:red">Trenutna</button>
+							<button id="buttonIzlistajPorudzbineD" class="button1" style="color:red">Izlistaj</button>
+						</div>
+		    	</div>
+			</li>		    
+		</ul> 
+	</form>
+	</nav>
+	
+
+	
+	<div id="loginBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="formaLogin">
+			<div id="loginDiv">
+			<div style="background-color: red; width: 100%; height: 30%;">
+				<button id="buttonX" class="buttonExit"><img src="images/exit.png"></button>
+				<img src="images/user.png" style="margin-left: 30px; margin-top: 10px"/>
+				<p style="color:white; font-size: 20px; margin-left: 22px;  margin-top: 10px">Prijava</p>				
+			</div>
+				  Korisničko ime:
+				  <input class="loginInput" type="text" name="username">
+				  <br>
+				  Lozinka:
+				  <input class="loginInput" type="password" name="password1" style="margin-left: 92px;">
+				  <br/><br/>
+				  <p id="errorLogin" style="color: red; font-size: 14px; margin-left: 300px;" hidden="true">Korisničko ime ili lozinka su pogrešno uneseni.</p>
+				  <input id="loginDugme" type="submit" value="Prijavi se">
+			</div>
+		</form>
+	</div>
+	
+	<div id="registerBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="registerForm">
+			<div class="dodajZaAdminaDiv">
+				<div style="background-color: red; width: 100%; height: 14%;">
+					<button id="buttonXr" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/user.png" style="margin-left: 30px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Registracija</p>				
+				</div>
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Korisničko ime:</p>
+					<br>
+					<p class="registerParagraphs">Lozinka:</p>
+					<br>
+					<p class="registerParagraphs">Ime:</p>
+					<br>
+					<p class="registerParagraphs">Prezime:</p>
+					<br>
+					<p class="registerParagraphs">Kontakt telefon:</p>
+					<br>
+					<p class="registerParagraphs">Email adresa:	</p>				
+				</div>
+				<p id="errorRegistration" style="color:red; margin-top:5px; font-size: 14px; margin-left: 40px; margin-bottom: -20px" hidden="true">Uneto korisničko ime već postoji. Unesite drugačije korisničko ime.</p>
+				<div style="width: 50%; float: left; height:86%;">	
+					 <input class="registerInput" type="text" name="usernameRegister">
+					 <input class="registerInput" type="password" name="loginRegister">
+					 <input class="registerInput" type="text" name="nameRegister">
+					 <input class="registerInput" type="text" name="surnameRegister">
+					 <p id="errorRegistrationP" style="color:red; margin-top:5px; font-size: 14px; margin-left: 40px; margin-bottom: -20px" hidden="true">Unos je neispravan, unesite samo brojeve.</p>
+					 <input class="registerInput" type="text" name="phoneRegister">
+					 <p id="errorRegistrationE" style="color:red; margin-top:5px; font-size: 14px; margin-left: 40px; margin-bottom: -20px" hidden="true">Nalog sa unetim email-om već postoji. Unesite drugačiji email.</p>
+					 <input class="registerInput" type="text" name="emailRegister">	
+					 <p id="errorRegistration1" style="color:red; font-size: 14px; margin-left: 35px;" hidden="true">Sva polja moraju biti ispravno popunjena za uspešnu registraciju.</p>
+					 <input id="registerDugme" class="dodajDugme" style="margin-top: 10px;" type="submit" value="Registruj se">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div id="dodajRestoranBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="dodajRestoranForm">
+			<div class="dodajZaAdminaDiv" style="height:65%">
+				<div style="background-color: red; width: 100%; height: 18%;">
+					<button id="buttonXdr" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/restoran.png" style="margin-left: 60px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Dodavanje restorana</p>				
+				</div>
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Naziv:</p>
+					<br>
+					<p class="registerParagraphs">Kategorija:</p>
+					<br>	
+					<p class="registerParagraphs">Grad:</p>
+					<br>
+					<p class="registerParagraphs">Ulica:</p>
+					<br>
+					<p class="registerParagraphs">Broj:</p>
+					<br>			
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input class="registerInput" type="text" name="nameRestaurant">
+					  <select class="registerInput" id="categoryRestaurant">
+								  <option value="Domaca Kuhinja">Domaća kuhinja</option>
+								  <option value="Rostilj">Roštilj</option>
+								  <option value="Kineska Kuhinja">Kineska kuhinja</option>
+								  <option value="Indijska Kuhinja">Indijska kuhinja</option>
+								  <option value="Poslasticarnica">Poslastičarnica</option>
+								  <option value="Picerija">Picerija</option>							  
+					 </select> 		
+					 <input class="registerInput" type="text" name="cityRestaurant">
+					 <input class="registerInput" type="text" name="streetRestaurant">
+					 <input class="registerInput" type="text" name="numberRestaurant">
+					 <p id="errorDodajRestoran" style="color: red; font-size: 14px; margin-left: 40px;" hidden="true">Sva polja moraju biti unesena kako bi dodavanje bilo uspešno</p>
+					 <input class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 10px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="tabelaDiv" id="tabelaRestoranaDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaRestorana" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Restorani</caption>
+				<thead>
+				<tr>
+					<th>Naziv</th>
+					<th>Adresa</th>
+					<th>Kategorija</th>
+					<th id="a1" hidden="true">Izmeni</th>
+					<th id="a2" hidden="true">Obrisi</th>
+					<th id="a6" hidden="true">Dodaj u omiljene</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>	
+	</div>
+	
+	<div id="izmeniRestoranBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="izmeniRestoranForm">
+			<div class="dodajZaAdminaDiv" style="height:65%">
+				<div style="background-color: red; width: 100%; height: 18%;">
+					<button id="buttonXidr" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/restoran.png" style="margin-left: 60px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 20px;  margin-top: 10px">Izmena restorana</p>				
+				</div>
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Naziv:</p>
+					<br>
+					<p class="registerParagraphs">Kategorija:</p>
+					<br>	
+					<p class="registerParagraphs">Grad:</p>
+					<br>
+					<p class="registerParagraphs">Ulica:</p>
+					<br>
+					<p class="registerParagraphs">Broj:</p>
+					<br>			
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input type="text" name="idRestaurant" hidden="true">
+					 <input class="registerInput" type="text" name="nameRestaurant">
+					  <select class="registerInput" id="categoryRestaurantIzmena">
+								  <option value="Domaca Kuhinja">Domaća kuhinja</option>
+								  <option value="Rostilj">Roštilj</option>
+								  <option value="Kineska Kuhinja">Kineska kuhinja</option>
+								  <option value="Indijska Kuhinja">Indijska kuhinja</option>
+								  <option value="Poslasticarnica">Poslastičarnica</option>
+								  <option value="Picerija">Picerija</option>							  
+					 </select> 		
+					 <input class="registerInput" type="text" name="cityRestaurant">
+					 <input class="registerInput" type="text" name="streetRestaurant">
+					 <input class="registerInput" type="text" name="numberRestaurant">
+					 <p id="errorIzmeniRestoran" style="color: red; font-size: 14px; margin-left: 40px;" hidden="true">Sva polja moraju biti unesena kako bi izmena bila uspešna</p>
+					 <input class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 10px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<!-- ///////////////////////////////////////////////VOZILA////////////////////////////////////////////////////////////////////////////// -->
+
+	<div id="dodajVoziloBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="dodajVoziloForm">
+			<div class="dodajZaAdminaDiv">
+				<div style="background-color: red; width: 100%; height: 14%;">
+					<button id="buttonXdv" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/car.png" style="margin-left: 60px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 20px;">Dodavanje vozila</p>				
+				</div>
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Marka:</p>
+					<br>
+					<p class="registerParagraphs">Model:</p>
+					<br>	
+					<p class="registerParagraphs">Tip:</p>
+					<br>
+					<p class="registerParagraphs">Registarska oznaka:</p>
+					<br>
+					<p class="registerParagraphs">Godina proizvodnje:</p>
+					<br>	
+					<p class="registerParagraphs">Napomena:</p>
+					<br>
+					<p class="registerParagraphs">Korisnik vozila:</p>
+					<br>
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input class="registerInput" type="text" name="carMark">
+					 <input class="registerInput" type="text" name="carModel">
+					  <select class="registerInput" id="carType">
+								  <option value="Bicikl">Bicikl</option>
+								  <option value="Skuter">Skuter</option>
+								  <option value="Automobil">Automobil</option>							  
+					 </select> 		
+					 <p id="errorDodajVozilo" style="color:red; font-size: 14px; margin-bottom: -20px;" hidden="true">Vozilo sa ovom registracionom oznakom je već uneseno.</p>					 
+					 <input class="registerInput" type="text" name="carRegisterId">
+					 <p id="errorDodajVozilo1" style="color:red; font-size: 14px; margin-bottom: -20px;" hidden="true">Godina mora biti pozitivan i ceo broj.</p>
+					 <input class="registerInput" type="text" name="carYear">
+					 <input class="registerInput" type="text" name="carNote">
+					 <select class="registerInput" id="carUser"></select>
+					 <p id="errorDodajVozilo2" style="color:red; font-size: 14px;" hidden="true">Sva polja sem napomene moraju biti ispravno unesena kako bi se vozilo uspešno dodalo.</p>
+					 <input class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 20px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+		<div id="izmeniVoziloBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="izmeniVoziloForm">
+			<div class="dodajZaAdminaDiv">
+				<div style="background-color: red; width: 100%; height: 14%;">
+					<button id="buttonXidv" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/car.png" style="margin-left: 60px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 30px;">Izmeni vozilo</p>				
+				</div>
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Marka:</p>
+					<br>
+					<p class="registerParagraphs">Model:</p>
+					<br>	
+					<p class="registerParagraphs">Tip:</p>
+					<br>
+					<p class="registerParagraphs">Registarska oznaka:</p>
+					<br>
+					<p class="registerParagraphs">Godina proizvodnje:</p>
+					<br>	
+					<p class="registerParagraphs">Napomena:</p>
+					<br>	
+					<p class="registerParagraphs">Korisnik vozila:</p>
+					<br>	
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input class="registerInput" type="text" name="carId" hidden="true">
+					 <input class="registerInput" type="text" name="carMark">
+					 <input class="registerInput" type="text" name="carModel">
+					 <select class="registerInput" id="carTypeIzmena">
+								  <option value="Bicikl">Bicikl</option>
+								  <option value="Skuter">Skuter</option>
+								  <option value="Automobil">Automobil</option>							  
+					 </select>
+					 <p id="errorIzmeniVozilo" style="color:red; font-size: 14px; margin-bottom: -20px;" hidden="true">Vozilo sa ovom registracionom oznakom je već uneseno.</p>					  							 
+					 <input class="registerInput" type="text" name="carRegisterId">
+					 <p id="errorIzmeniVozilo1" style="color:red; font-size: 14px; margin-bottom: -20px;" hidden="true">Godina mora biti pozitivan i ceo broj.</p>
+					 <input class="registerInput" type="text" name="carYear">
+					 <input class="registerInput" type="text" name="carNote">
+					 <select class="registerInput" id="carUserI"></select>
+					 <p id="errorIzmeniVozilo2" style="color:red; font-size: 14px;" hidden="true">Sva polja sem napomene moraju biti ispravno unesena kako bi se vozilo uspešno izmenilo.</p>
+					 <input class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 20px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="tabelaDiv" id="tabelaVozilaDiv" hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaVozila" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Vozila</caption>
+				<thead>
+				<tr>
+					<th>Marka</th>
+					<th>Model</th>
+					<th>Tip</th>
+					<th>Registarska oznaka</th>
+					<th>Godina proizvodnje</th>
+					<th>Napomena</th>
+					<th>Korisnik</th>
+					<th>Izmeni</th>
+					<th>Obrisi</th>			
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>	
+	</div>
+	
+	<div id="izmeniKupcaBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="izmeniKupcaForm">
+			<div class="dodajZaAdminaDiv" style="height:30%">
+				<div style="background-color: red; width: 100%; height: 30%;">
+					<button id="buttonXidk" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/user.png" style="margin-left: 80px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 20px;">Izmeni ulogu korisnika</p>				
+				</div>
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Uloga:</p>
+					<br>	
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					<input class="registerInput" type="text" name="usernameKupac" hidden="true">
+					<input class="registerInput" type="text" name="lozinkaKupac" hidden="true">
+					<input class="registerInput" type="text" name="imeKupac" hidden="true">
+					<input class="registerInput" type="text" name="prezimeKupac" hidden="true">
+					<input class="registerInput" type="text" name="telefonKupac" hidden="true">
+					<input class="registerInput" type="text" name="emailKupac" hidden="true">
+					<input class="registerInput" type="text" name="datumKupac" hidden="true">
+					 <select class="registerInput" id="userRoleIzmena">
+								  <option value="kupac">kupac</option>
+								  <option value="admin">admin</option>
+								  <option value="dostavljac">dostavljac</option>							  
+					 </select> 							 
+					 <input class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 70px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+<!-- ///////////////////////////////////////////IZLISTAVANJE KORISNIKA //////////////////////////////////////////////////////////////////// -->
+
+	<div class="tabelaDiv" id="tabelaKorisnikaDiv" hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaKorisnika" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Korisnici</caption>
+				<thead>
+				<tr>
+					<th>Korisničko ime</th>
+					<th>Ime</th>
+					<th>Prezime</th>
+					<th>Kontakt telefon</th>
+					<th>Email</th>
+					<th>Uloga</th>
+					<th>Izmeni ulogu</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>	
+	</div>
+	
+	<div class="tabelaDiv" id="tabelaArtikalaDiv" hidden="true">
+		<div class="tabelaDivChild">
+			<!--  <button id="dodajArtikalButton" hidden="true"><b>Dodaj artikal</b></button>-->
+			<table id="tabelaArtikala" class="tabelaPromenaAdmina" style="margin-right: 250px;">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Jela</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Opis</th>
+					<th>Restoran</th>
+					<th id="a3" hidden="true">Izmeni</th>
+					<th id="a4" hidden="true">Obriši</th>
+					<th id="a7" hidden="true">Dodaj u porudžbinu</th>
+					<th id="a5" hidden="true">Dodaj u korpu</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>	
+			<table id="tabelaArtikalaP" class="tabelaPromenaAdmina" style="margin-right: 250px;">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Pića</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Opis</th>
+					<th>Restoran</th>
+					<th id="c3" hidden="true">Izmeni</th>
+					<th id="c4" hidden="true">Obriši</th>
+					<th id="c7" hidden="true">Dodaj u porudžbinu</th>
+					<th id="c5" hidden="true">Dodaj u korpu</th>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>					
+		</div>	
+	</div>
+	
+	<div id="artikalBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="artikalForm">
+			<div class="dodajZaAdminaDiv" style="height:75%">
+				<div style="background-color: red; width: 100%; height: 16%;">
+					<button id="buttonXa" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/artikli.png" style="margin-left: 50px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Dodavanje artikla</p>				
+				</div>
+
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Tip:</p>
+					<br>
+					<p class="registerParagraphs">Naziv:</p>
+					<br>
+					<p class="registerParagraphs">Cena:</p>
+					<br>
+					<p class="registerParagraphs">Količina:</p>
+					<br>
+					<p class="registerParagraphs">Opis:</p>
+					<br>
+					<p class="registerParagraphs">Restoran:</p>
+					<br>				
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input type="text" name="idRestoranaZaArtikle" hidden="true">
+					 <select class="registerInput" id="tipArtikla">
+								  <option value="jelo">Jelo</option>
+								  <option value="pice">Piće</option>							  
+					 </select> 	
+					 <input class="registerInput" type="text" name="nameArtikal">
+					 <p id="errorArtikalUnos" style="color:#f5f5f5; font-size: 14px; margin-bottom: -20px;">Cena mora biti pozitivan i ceo broj.</p>
+					 <input class="registerInput" style="width:400px;" type="text" name="priceArtikal"><p class="kolicinaParagraph" style="margin-top: 30px;">dinara</p>
+					 <p id="errorArtikalUnos1" style="color:#f5f5f5; font-size: 14px; margin-bottom: -20px;">Količina mora biti pozitivan i ceo broj.</p>
+					 <input class="registerInput" style="width:400px;" type="text" name="amountArtikal"><p class="kolicinaParagraph" style="margin-top: 35px;" id="jelo">grama</p>
+					 <p id="pice" class="kolicinaParagraph" hidden="true" style="margin-top: 35px;">mililitara</p>
+					 <input class="registerInput" type="text" name="descriptionArtikal">
+					 <select id="selectRestoranZaArtikal" class="registerInput"></select>
+					 <p id="errorArtikalUnos2" style="color:#f5f5f5; font-size: 14px; margin-bottom: -20px;">Svako polje osim opisa mora biti uneto za uspešno dodavanje artikla.</p>
+					 <input id="artikliDugme" class="dodajDugme" type="submit" value="Dodaj">	
+					 			 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div id="izmenaArtikalBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="artikalFormIzmena">
+			<div class="dodajZaAdminaDiv" style="height:75%">
+				<div style="background-color: red; width: 100%; height: 16%;">
+					<button id="buttonXia" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/artikli.png" style="margin-left: 50px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Izmena artikla</p>				
+				</div>
+
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Tip:</p>
+					<br>
+					<p class="registerParagraphs">Naziv:</p>
+					<br>
+					<p class="registerParagraphs">Cena:</p>
+					<br>
+					<p class="registerParagraphs">Količina:</p>
+					<br>
+					<p class="registerParagraphs">Opis:</p>
+					<br>	
+					<p class="registerParagraphs">Restoran:</p>
+					<br>			
+				</div>
+				<div style="width: 50%; float: left; height:86%;">
+					<input type="text" name="idArtikla" hidden="true">
+					 <input type="text" name="idRestoranaZaArtikle" hidden="true">
+					 <select class="registerInput" id="tipArtiklaIzmena">
+								  <option value="jelo">Jelo</option>
+								  <option value="pice">Piće</option>							  
+					 </select> 	
+					 <input class="registerInput" type="text" name="nameArtikal">
+					 <p id="errorArtikalIzmena" style="color:#f5f5f5; font-size: 14px; margin-bottom: -20px;">Cena mora biti pozitivan i ceo broj.</p>
+					 <input class="registerInput" style="width:400px;" type="text" name="priceArtikal"><p class="kolicinaParagraph" style="margin-top: 30px">dinara</p>
+					 <p id="errorArtikalIzmena1" style="color:#f5f5f5; font-size: 14px; margin-bottom: -20px;">Količina mora biti pozitivan i ceo broj.</p>
+					 <input class="registerInput" style="width:400px;" type="text" name="amountArtikal"><p class="kolicinaParagraph" id="jeloIzmena" style="margin-top: 35px;">grama</p>
+					 <p id="piceIzmena" class="kolicinaParagraph" hidden="true" style="margin-top: 35px;">mililitara</p>
+					 <input class="registerInput" type="text" name="descriptionArtikal">
+					 <select id="selectRestoranZaArtikalIzmena" class="registerInput"></select>
+					 <p id="errorArtikalIzmena2" style="color:#f5f5f5; font-size: 14px; margin-bottom: -20px;">Svako polje osim opisa mora biti uneto za uspešnu izmenu artikla.</p>
+					 <input id="artikliDugme1" class="dodajDugme" type="submit" value="Dodaj">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="tabelaDiv" id="izlistajPrudzbineAdminDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaPorudzbinaAdmin" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Porudžbine</caption>
+				<thead>
+				<tr>
+					<th>Kupac</th>
+					<th>Status porudžbine</th>
+					<th>Datum poručivanja</th>
+					<th>Napomena</th>
+					<th>Dostavljač</th>
+					<th>Izmeni</th>
+					<th>Obriši</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>	
+	</div>	
+	
+	<div class="tabelaDiv" id="artikliPorudzbineDiv"  hidden="true">
+		<div class="tabelaDivChild">
+		<form id="artikliPorudzbineForm">
+			<table id="tabelaArtikliPorudzbine" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Porudžbina</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Broj</th>
+					<th>Izbaci iz porudžbine</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</form>
+		</div>	
+	</div>
+	
+	<div id="dodajBrojArtikalBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="porudzbinaFormNumber">
+			<div class="dodajZaAdminaDiv" style="height:35%">
+				<div style="background-color: red; width: 100%; height: 32%;">
+					<button id="buttonXibp" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/korpa.png" style="margin-left: 65px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Broj artikala za kupovinu</p>				
+				</div>
+
+				<div style="width: 32%; float: left; height:76%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Broj za dodavanje u korpu:</p>
+					<br>				
+				</div>
+				<div style="width: 50%; float: left; height:36%;">
+					 <input type="text" name="idArtiklaKSB" hidden="true">
+					 <input class="registerInput" type="text" name="brojArtikalaKojiSD">	 
+					 <p id="errorBrojArtikala" style="color: red; font-size: 14px;" hidden="true">Broj artikala mora biti ceo pozitivan broj manji od 11</p> 							  
+					 <input id="porudzbineDugmeBroj" class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 40px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div id="izmenaPorudzbinaBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="porudzbinaFormIzmena">
+			<div class="dodajZaAdminaDiv" style="height:60%">
+				<div style="background-color: red; width: 100%; height: 18%;">
+					<button id="buttonXip" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/korpa.png" style="margin-left: 50px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Izmena porudžbine</p>				
+				</div>
+
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Kupac:</p>
+					<br>
+					<p class="registerParagraphs">Status:</p>
+					<br>
+					<p class="registerParagraphs">Napomena:</p>
+					<br>
+					<p class="registerParagraphs">Dostavljač:</p>
+					<br>				
+				</div>
+				<p id="errorIzmenaP" style="color:red; font-size: 14px; margin-bottom: -20px" hidden="true">Uneto korisničko ime ne postoji. Unesite postojeće korisničko ime.</p>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input class="registerInput" type="text" name="nameIdP" hidden="true">
+					 <input class="registerInput" type="text" name="nameKupacP">
+					 <select class="registerInput" id="statusPorudzbinaIzmena">	  	
+					 	<option value="Poruceno">Poručeno</option>
+					 	<option value="Dostava u toku">Dostava u toku</option>	
+					 	<option value="Dostavljeno">Dostavljeno</option>	
+					 	<option value="Otkazano">Otkazano</option>						  
+					 </select> 
+					 <input class="registerInput" type="text" name="nameNapomenaP">
+					 <p id="errorIzmenaP1" style="color:red; font-size: 13px; margin-bottom: -20px" hidden="true">Uneto korisničko ime dostavljača ne postoji. Unesite postojeće korisničko ime.</p>
+					 <p id="errorIzmenaP2" style="color:red; font-size: 14px; margin-bottom: -20px" hidden="true">Uneti dostavljač već ima porudžbinu u toku.</p>
+					 <input class="registerInput" type="text" name="nameDostavljacP">	
+					 <input id="porudzbineDugme" class="dodajDugme" type="submit" value="Dodaj">				 	  
+				</div>
+			</div>
+		</form>
+	</div>	
+	
+	<div id="kreiranjePorudzbinaAdminBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="porudzbinaFormCreate">
+			<div class="dodajZaAdminaDiv" style="height:60%">
+				<div style="background-color: red; width: 100%; height: 18%;">
+					<button id="buttonXikp" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/korpa.png" style="margin-left: 50px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Kreiranje porudžbine</p>				
+				</div>
+
+				<div style="width: 25%; float: left; height:86%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Kupac:</p>
+					<br>
+					<p class="registerParagraphs">Status:</p>
+					<br>
+					<p class="registerParagraphs">Napomena:</p>
+					<br>
+					<p class="registerParagraphs">Dostavljač:</p>
+					<br>				
+				</div>
+				<p id="errorIzmenaKP" style="color:red; font-size: 14px; margin-bottom: -20px" hidden="true">Uneto korisničko ime ne postoji. Unesite postojeće korisničko ime.</p>
+				<div style="width: 50%; float: left; height:86%;">
+					 <input class="registerInput" type="text" name="nameIdKP" hidden="true">
+					 <input class="registerInput" type="text" name="nameKupacKP">
+					 <select class="registerInput" id="statusPorudzbinaIzmenaK">	  	
+					 	<option value="Poruceno">Poručeno</option>
+					 	<option value="Dostava u toku">Dostava u toku</option>	
+					 	<option value="Dostavljeno">Dostavljeno</option>	
+					 	<option value="Otkazano">Otkazano</option>						  
+					 </select> 
+					 <input class="registerInput" type="text" name="nameNapomenaKP">
+					 <p id="errorIzmenaKP1" style="color:red; font-size: 13px; margin-bottom: -20px" hidden="true">Uneto korisničko ime dostavljača ne postoji. Unesite postojeće korisničko ime.</p>
+					 <p id="errorIzmenaKP3" style="color:red; font-size: 13px; margin-bottom: -20px" hidden="true">Uneti dostavljač već ima dostavu u toku.</p>
+					 <input class="registerInput" type="text" name="nameDostavljacKP">	
+					 <p id="errorIzmenaKP2" style="color:red; font-size: 14px;" hidden="true">Sva polja osim napomene moraju biti ispravno unesena kako bi kreiranje porudžbine bilo uspešno.</p>
+					 <input id="porudzbineDugmeKP" class="dodajDugme" type="submit" value="Dodaj" style="margin-top: 20px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>	
+	
+	<div id="dodajArtikalSelectBackGroundDiv" class="backgroundDivs" hidden="true">
+		<form id="porudzbinaFormAdd">
+			<div class="dodajZaAdminaDiv" style="height:42%">
+				<div style="background-color: red; width: 100%; height: 27%;">
+					<button id="buttonXipukd" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/korpa.png" style="margin-left: 50px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 10px;  margin-top: 10px">Izbor porudžbine</p>				
+				</div>
+
+				<div style="width: 25%; float: left; height:36%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Porudžbina:</p>
+					<br>
+					<br>
+					<p class="registerParagraphs" style="margin-top:-26px;">Broj artikala:</p>
+					<br>				
+				</div>
+				<div style="width: 50%; float: left; height:36%;">
+					 <input type="text" name="idArtiklaKSD" hidden="true">
+					 <select class="registerInput" id="selectPorudzbinuUKSD" name="selektovanje">	  							  
+					 </select> 
+					 <input  class="registerInput" name="selectBrojArtikla" type="text">
+					 <p id="errorIzmenaBA" style="color:red; font-size: 14px;" hidden="true">Broj artikala mora biti ceo pozitivan broj manji od 11</p>
+					 <input id="porudzbineDugmeAdd" class="dodajDugme" type="submit" value="Izaberi" style="margin-top: 20px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+	
+		<div class="divParent" id="divParentId" style="background-image: url('images/foodMainMenu.jpg');">
+				<div class="divChild">
+					 <table class="tabelaNajpopularnijihArtikala" id="tabelaJela">
+					 	<caption style="font-size: 40px; padding-top: 60px; font-family: sans-serif;">Najpopularnija jela</caption>
+						<thead>
+						<tr>
+							<th>Naziv</th>
+							<th>Cena</th>
+							<th>Količina</th>
+							<th>Restoran</th>
+						</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table> 
+					
+					<table class="tabelaNajpopularnijihArtikala" id="tabelaPica">
+					 	<caption style="font-size: 40px; padding-top: 60px; font-family: sans-serif;">Najpopularnija pića</caption>
+						<thead>
+						<tr>
+							<th>Naziv</th>
+							<th>Cena</th>
+							<th>Količina</th>
+							<th>Restoran</th>
+						</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table> 
+					<pre>
+					
+					</pre>
+					<div class="kategorijeRestorana">
+						<p style="font-family: sans-serif; font-size: 40px; text-align: center;">Kategorije restorana</p>
+						<pre>
+						</pre>
+						
+					<form id="domacaKuhinjaForm">
+						<div  class="kategorijeRestoranaDivs" style="margin-right:20px;">
+						  	<input type='image' src="images/sarma1.jpg" width='179' height='150' name='domaciRestorani' value='submit' style="border-bottom: 2px solid black;" />
+						  	<p style="margin-left: 20px;">Domaća kuhinja</p>
+						</div>
+					</form>
+					
+					<form id="rostiljForm">
+						<div  class="kategorijeRestoranaDivs" style="margin-right:20px;">
+						  	<input type='image' src="images/rostilj.jpg" width='179' height='150' name='rostiljRestorani' value='submit' style="border-bottom: 2px solid black;" />
+						  	<p style="margin-left: 60px;">Roštilj</p>
+						</div>
+					</form>
+						
+					<form id="kineskaKuhinjaForm">	
+						<div  class="kategorijeRestoranaDivs" style="margin-right:20px;">
+						  	<input type='image' src="images/kineskaHrana.jpg" width='179' height='150' name='kineskiRestorani' value='submit' style="border-bottom: 2px solid black;" />
+						  	<p style="margin-left: 20px;">Kineska kuhinja</p>
+						</div>
+					</form>
+						
+					<form id="indijskaKuhinjaForm">
+						<div  class="kategorijeRestoranaDivs" style="margin-right:20px;">
+						  	<input type='image' src="images/indianFood.jpeg" width='179' height='150' name='indijskiRestorani' value='submit' style="border-bottom: 2px solid black;" />
+						  	<p style="margin-left: 20px;">Indijska kuhinja</p>
+						</div>
+					</form>
+						
+					<form id="poslasticarnicaForm">	
+						<div  class="kategorijeRestoranaDivs" style="margin-right:20px;">
+						  	<input type='image' src="images/poslasticarnica1.jpg" width='179' height='150' name='poslasticarnicaRestorani' value='submit' style="border-bottom: 2px solid black;" />
+						  	<p style="margin-left: 20px;">Poslastičarnica</p>
+						</div>
+					</form>
+						
+					<form id="picerijaForm">	
+						<div  class="kategorijeRestoranaDivs">
+						  	<input type='image' src="images/pizza.jpg" width='179' height='150' name='PizzaRestorani' value='submit' style="border-bottom: 2px solid black;" />
+						  	<p style="margin-left: 60px;">Picerija</p>
+						</div>
+	
+					</form>
+					</div>	
+				</div>
+		</div>
+
+<!-- MOJA STRANICA  -->		
+	<div class="tabelaDiv" id="mojaStranicaDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaOmiljenihRestorana" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Omiljeni restorani</caption>
+				<thead>
+				<tr>
+					<th>Naziv</th>
+					<th>Adresa</th>
+					<th>Kategorija</th>
+					<th>Izbaci</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>	
+		<div class="tabelaDivChild">
+			<table id="tabelaPrethodnihPorudzbina" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Istorija porudžbina</caption>
+				<thead>
+				<tr>
+					<th>Kupac</th>
+					<th>Status porudžbine</th>
+					<th>Datum poručivanja</th>
+					<th>Napomena</th>
+					<th>Dostavljač</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>			
+	</div>
+	
+	<div class="tabelaDiv" id="tabelaArtikalaPrethodnihPorudzbinaDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaArtikalaPrethodnihPorudzbina" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Porudžbina</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Broj</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>	
+	</div>	
+
+<!-- MOJA KORPA -->	
+
+	<div class="tabelaDiv" id="mojaKorpaDiv"  hidden="true">
+		<div class="tabelaDivChild">
+		<form id="korpaForm">
+		<input id="posaljiPorudzbinuButton" type="submit" value="Poruči">
+			<table id="tabelaTrenutneKorpe" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Porudžbina</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Broj</th>
+					<th>Izbaci iz korpe</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+			<p style="font-family: sans-serif; font-size: 20px; margin-left: 117px; margin-top: 10px;" id="ukupnaCena">Ukupna cena: </p>
+			<p style="font-family: sans-serif; font-size: 20px; margin-left: 117px; margin-top: 50px;">Napomena: </p>
+			<input type="text" style="height:20px; width:700px; margin-left: 117px;" name="napomenaTextArea">
+			<p style="font-family: sans-serif; font-size: 20px; margin-left: 117px; margin-top: 50px;" id="bodoviP"></p>
+			<p style="font-family: sans-serif; font-size: 20px; margin-left: 117px; margin-top: 5px;">Iskoristite bodove: </p>
+			<input type="text" style="height:20px; width:100px; margin-left: 117px;" name="bodoviTextBox" id="bodoviDaLiIhIma">	
+		</form>
+		</div>	
+	</div>	
+
+<!-- DOSTAVLJAC -->
+
+	<div class="tabelaDiv" id="tremutmaPrudzbinaDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<button id="zavrsiPorudzbinuButton"><b>Završi porudžbinu</b></button>
+			<p id="p1" style="padding-top: 70px; margin-left: 30px; font-family: sans-serif; font-size: 25px"></p>
+			<p id="p2" style="padding-top: 70px; margin-left: 30px; font-family: sans-serif; font-size: 25px"></p>
+			<p id="p3" style="padding-top: 70px; margin-left: 30px; font-family: sans-serif; font-size: 25px"></p>
+			<p id="p4" style="padding-top: 70px; margin-left: 30px; font-family: sans-serif; font-size: 25px"></p>
+			<p id="p5" style="padding-top: 70px; margin-left: 30px; font-family: sans-serif; font-size: 25px" hidden="true"></p>
+			<p id="p6" style="padding-top: 70px; margin-left: 30px; font-family: sans-serif; font-size: 25px"></p>
+			<select id="selectVoziloZaDostavu" style="margin-left: 30px; font-family: sans-serif; font-size:15px; height:20px; width:400px;" hidden="true">
+			</select>
+			<table id="tabelaTrenutnePorudzbine" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Artikli</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Broj</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>	
+	</div>	
+	
+	<div class="tabelaDiv" id="izlistajPorudzbineDDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaPorudzbinaD" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Porudžbine</caption>
+				<thead>
+				<tr>
+					<th>Kupac</th>
+					<th>Status porudžbine</th>
+					<th>Datum porudžbine</th>
+					<th>Napomena</th>
+					<th>Preuzmi</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>	
+	</div>
+	
+		
+	<div class="tabelaDiv" id="artikliPorudzbineDDiv"  hidden="true">
+		<div class="tabelaDivChild">
+			<table id="tabelaArtikliPorudzbineD" class="tabelaPromenaAdmina">
+				<caption style="font-size: 40px; padding-top: 60px; margin-top:20px; margin-bottom:30px; font-family: sans-serif;">Porudžbina</caption>
+				<thead>
+				<tr>
+					<th>Tip</th>
+					<th>Naziv</th>
+					<th>Cena</th>
+					<th>Količina</th>
+					<th>Broj</th>
+				</tr>
+				</thead>
+			<tbody>
+			</tbody>
+			</table>
+		</div>	
+	</div>
+	
+		<div id="izaberiVozilo" class="backgroundDivs" hidden="true">
+		<form id="izaberiVoziloForm">
+			<div class="dodajZaAdminaDiv" style="height:30%">
+				<div style="background-color: red; width: 100%; height: 35%;">
+					<button id="buttonXiiv" class="buttonExit"><img src="images/exit.png"></button>
+					<img src="images/car.png" style="margin-left: 50px; margin-top: 10px"/>
+					<p style="color:white; font-size: 20px; margin-left: 30px;  margin-top: 10px">Izbor vozila</p>				
+				</div>
+
+				<div style="width: 25%; float: left; height:36%; font-family: sans-serif; font-size: 20px;">
+					<br>
+					<p class="registerParagraphs">Vozilo:</p>
+					<br>				
+				</div>
+				<div style="width: 50%; float: left; height:36%;">
+					 <select class="registerInput" id="izaberiVoziloZaDostavu">	  							  
+					 </select> 
+					 <input id="izmenaVozilaDugme" class="dodajDugme" type="submit" value="Izaberi" style="margin-top: 20px;">				 	  
+				</div>
+			</div>
+		</form>
+	</div>
+		
+</body>
+</html>
